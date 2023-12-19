@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+	"-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+	"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+      <class name="entities.Payment" table="payments" discriminator-value="Payment">
+      		<id name="idPayment" column="IdPayment"> 
+           			<generator class="increment"/> </id>
+           	<discriminator column="TYPE" type="string" />
+			<property name="amount" column="amount" />
+			<property name="paymentDate" column="paymentDate" />
+			<subclass name="entities.PaypalPayment" discriminator-value="PaypalPayment">
+				<property name="accountNumber" column="accountNumber" />
+		</subclass>
+		<subclass name="entities.CreditCardPayment" discriminator-value="CreditCardPayment">
+				<property name="cardNumber" column="cardNumber" />
+					<property name="expirationDate" column="expirationDate" />
+		</subclass>
+	  </class>
+</hibernate-mapping>

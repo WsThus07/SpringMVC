@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="entities">
+    <class name="CommandLine" table="command_line_table">
+        <id name="idCommandLine" type="int">
+            <column name="id_command_line" />
+            <generator class="increment" />
+        </id>
+        <property name="quantity" type="int">
+            <column name="quantity" />
+        </property>
+        <many-to-one name="command" class="Command" column="IdCommand" />
+        <many-to-one name="article" class="Article" column="IdArticle" />
+    </class>
+</hibernate-mapping>
