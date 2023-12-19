@@ -84,7 +84,6 @@ public class ServiceDao implements IServiceDao {
 		Query q=session.createQuery("from Article");
 		List<Article> articles =q.list();
 		return articles;	
-		
 	}
 	
 	@Override
